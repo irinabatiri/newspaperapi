@@ -11,10 +11,11 @@ class Article(models.Model):
         return self.title
 
 
-# class Like(models.Model):
-#     reader = models.ForeignKey(User, on_delete = models.CASCADE)
-#     like = models.BooleanField()
-#     article = models.ForeignKey(Article, on_delete = models.CASCADE)
+class Like(models.Model):
+    # LIKE_CHOICES = [(LIKE, 'Like'), (UNLIKE, 'Unlike'), (ZERO, 'No opinion'),]
+    reader = models.ForeignKey(User, on_delete = models.CASCADE)
+    like = models.BooleanField(null=True)
+    article = models.ForeignKey(Article, on_delete = models.CASCADE)
 
-#     def __str__(self):
-#         return self.like
+    def __str__(self):
+        return self.like
