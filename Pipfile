@@ -11,6 +11,9 @@ psycopg2 = "*"
 djangorestframework = "==3.10.3"
 django-rest-auth = "==0.9.5"
 django-allauth = "==0.40.0"
+coreapi = "*"
+pyyaml = "==5.1"
+django-rest-swagger = "==2.2.0"
 
 [requires]
 python_version = "3.7"

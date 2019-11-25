@@ -17,5 +17,5 @@ class UserSerializer(serializers.ModelSerializer):
 class LikeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Like
-        fields = ('id', 'reader', 'article', 'like')
+        fields = ('id', 'reader', 'article',)
         

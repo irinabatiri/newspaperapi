@@ -12,9 +12,7 @@ class Article(models.Model):
 
 
 class Like(models.Model):
-    # LIKE_CHOICES = [(LIKE, 'Like'), (UNLIKE, 'Unlike'), (ZERO, 'No opinion'),]
     reader = models.ForeignKey(User, on_delete = models.CASCADE)
-    like = models.BooleanField(null=True)
     article = models.ForeignKey(Article, on_delete = models.CASCADE)
 
     def __str__(self):
