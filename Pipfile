@@ -14,6 +14,7 @@ django-allauth = "==0.40.0"
 coreapi = "*"
 pyyaml = "==5.1"
 django-rest-swagger = "==2.2.0"
+gunicorn = "==19.9.0"
 
 [requires]
 python_version = "3.7"
