@@ -339,6 +339,20 @@
             "optional": false,
             "field": "newpassword2",
             "description": "<p>The same new password</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "Uid",
+            "description": "<p>The unique ID of the user</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "Token",
+            "description": "<p>Token of the user</p>"
           }
         ]
       }

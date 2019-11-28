@@ -447,6 +447,8 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
 @apiPermission Authenticated user
 @apiParam {String} newpassword1   The new password 1
 @apiParam {String} newpassword2   The same new password
+@apiParam {Number} Uid            The unique ID of the user
+@apiParam {String} Token          Token of the user
 
 @apiSuccess {String} message
 @apiSuccessExample Success-Response:
