@@ -5,13 +5,11 @@ from .models import Article, Like
 from .serializers import ArticleSerializer, UserSerializer, LikeSerializer
 
 
-
 class ArticleList(generics.ListAPIView):
     """
-    @apiDefine Authenticated user    Only logged in users can use this functionality
-    """
-    """
-    @api {get}    /                     Retrieve all articles
+    @api {get}    articles/                     Retrieve all articles
+    @apiHeader {String} Authorization='Token a1fe532ee4dbb5307cba3994733bcc6c1f47c8b2'
+    @apiSampleRequest http://localhost:8000/api/v1/articles/
     @apiName GetArticles
     @apiGroup Articles
     @apiPermission Authenticated user
@@ -46,9 +44,12 @@ class ArticleList(generics.ListAPIView):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
 
+
 class ArticleDetail(generics.RetrieveAPIView):
     """
-    @api {get} :id Retrieve one article
+    @api {get} articles/:id Retrieve one article
+    @apiHeader {String} Authorization='Token a1fe532ee4dbb5307cba3994733bcc6c1f47c8b2'
+    @apiSampleRequest http://localhost:8000/api/v1/articles/:id
     @apiName GetArticle
     @apiGroup Articles
     @apiParam {Number} id Article unique ID
@@ -90,9 +91,12 @@ class ArticleDetail(generics.RetrieveAPIView):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
 
+
 class LikeCreate(generics.CreateAPIView):
     """
     @api {post} /likes/  Like an article
+    @apiHeader {String} Authorization='Token 	6c00b7d00f7c2ceb9c7287927c5cad2418de425c'
+    @apiSampleRequest http://localhost:8000/api/v1/likes/
     @apiName PostLike
     @apiGroup Likes
     @apiPermission Authenticated user
@@ -124,9 +128,12 @@ class LikeCreate(generics.CreateAPIView):
     queryset = Like.objects.all()
     serializer_class = LikeSerializer
 
+
 class LikeDestroy(generics.DestroyAPIView):
     """
     @api {delete} likes/:id  Unlike an article
+    @apiHeader {String} Authorization='Token 6c00b7d00f7c2ceb9c7287927c5cad2418de425c'
+    @apiSampleRequest http://localhost:8000/api/v1/likes/:id
     @apiName DeleteLike
     @apiGroup Likes
     @apiPermission Authenticated user 
@@ -147,9 +154,12 @@ class LikeDestroy(generics.DestroyAPIView):
     queryset = Like.objects.all()
     serializer_class = LikeSerializer
 
+
 class UserList(generics.ListCreateAPIView):
     """
     @api {get} users/ Retrieve all users
+    @apiHeader {String} Authorization='Token 8fc190f141d323b9ce9570d8bbe6d8f5206d81be'
+    @apiSampleRequest http://localhost:8000/api/v1/users/
     @apiName GetUsers
     @apiGroup UsersForAdmin
     @apiPermission Admin
@@ -158,6 +168,8 @@ class UserList(generics.ListCreateAPIView):
     @apiSuccess {Number} id         ID of the user.
     @apiSuccess {String} username   Username.
 
+    @apiSampleRequest http://127.0.0.1:8000/api/v1/
+    
     @apiSuccessExample Success-Response:
         HTTP 200 OK
         [
@@ -179,9 +191,12 @@ class UserList(generics.ListCreateAPIView):
     queryset = get_user_model().objects.all()
     serializer_class = UserSerializer
 
+
 class UserDetail(generics.RetrieveUpdateDestroyAPIView):
     """
-    @api {get} users/:id Retreive one user
+    @api {get} users/:id/ Retreive one user
+    @apiHeader {String} Authorization='Token 8fc190f141d323b9ce9570d8bbe6d8f5206d81be'
+    @apiSampleRequest http://localhost:8000/api/v1/users/:id/
     @apiName GetUser
     @apiGroup UsersForAdmin
     @apiParam {Number} id User's unique ID
@@ -213,7 +228,9 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
         }
     """
     """
-    @api {put} users/:id Update a user
+    @api {put} users/:id/ Update a user
+    @apiHeader {String} Authorization='Token 8fc190f141d323b9ce9570d8bbe6d8f5206d81be'
+    @apiSampleRequest http://localhost:8000/api/v1/users/:id/
     @apiName PutUser
     @apiGroup UsersForAdmin
     @apiParam {Number} id       User's unique ID
@@ -244,7 +261,9 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
         
     """
     """
-    @api {delete} user/:id Delete one user
+    @api {delete} user/:id/ Delete one user
+    @apiHeader {String} Authorization='Token 8fc190f141d323b9ce9570d8bbe6d8f5206d81be'
+    @apiSampleRequest http://localhost:8000/api/v1/users/:id/
     @apiName DeleteUser
     @apiGroup UsersForAdmin
     @apiParam {Number} id User's unique ID
@@ -271,7 +290,8 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = get_user_model().objects.all()
     serializer_class = UserSerializer
 """
-@api {post} rest-auth/registration/  Registration 
+@api {post} rest-auth/registration/  Registration
+@apiSampleRequest http://localhost:8000/api/v1/rest-auth/registration/ 
 @apiName PostRegistration
 @apiGroup Authentication
 @apiPermission Anonymous user
@@ -319,6 +339,7 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
 """
 """
 @api {post} rest-auth/login/ Login post page
+@apiSampleRequest http://localhost:8000/api/v1/rest-auth/login/
 @apiName PostLogin
 @apiGroup Authentication
 @apiPermission Anonymous user
@@ -352,20 +373,23 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
 """
 """
 @api {post} rest-auth/logout/  Logout page
+@apiHeader {String} Authorization='Token a1fe532ee4dbb5307cba3994733bcc6c1f47c8b2'
+@apiSampleRequest http://localhost:8000/api/v1/rest-auth/logout/
 @apiName GetLogout
 @apiGroup Authentication
 @apiPermission Authenticated User
 
-@apiSuccess {String} message
+@apiSuccess {String} message Successfully logged out.
 @apiSuccessExample Success-Response:
     HTTP 200 OK
     {
         "detail": "Successfully logged out."
     }
-
 """
 """
 @api {post} rest-auth/password/change/  Password change
+@apiHeader {String} Authorization='Token 543b765b9df06a3c2cf05f4f456f926739c38f07'
+@apiSampleRequest http://localhost:8000/api/v1/rest-auth/password/change/
 @apiName PostNewPassword
 @apiGroup Authentication
 @apiPermission Authenticated user
@@ -390,6 +414,8 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
 """
 """
 @api {post} rest-auth/password/reset/   Password reset
+@apiHeader {String} Authorization='Token 543b765b9df06a3c2cf05f4f456f926739c38f07'
+@apiSampleRequest http://localhost:8000/api/v1/rest-auth/password/reset/
 @apiName PostResetPassword
 @apiGroup Authentication
 @apiPermission Authenticated user
@@ -413,14 +439,14 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
 
 """
 """
-@api {post} rest-auth/password/reset/confirm/ Password reset confirm
+@api {get} rest-auth/password/reset/confirm/ Password reset confirm
+@apiHeader {String} Authorization='Token 543b765b9df06a3c2cf05f4f456f926739c38f07'
+@apiSampleRequest http://localhost:8000/api/v1/rest-auth/password/reset/confirm
 @apiName PostConfirmResetPassword
 @apiGroup Authentication
 @apiPermission Authenticated user
 @apiParam {String} newpassword1   The new password 1
 @apiParam {String} newpassword2   The same new password
-@apiParam {Number} user_ID        The unique user's ID
-@apiParam {String} token          The auth token
 
 @apiSuccess {String} message
 @apiSuccessExample Success-Response:
@@ -439,6 +465,8 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
 """
 """
 @api {get} rest-auth/user/ Retrieve the logged in user
+@apiHeader {String} Authorization='Token c5d185f9b0a38ef1cd9ac76b7e1adcaa80345e13'
+@apiSampleRequest http://localhost:8000/api/v1/rest-auth/user/
 @apiName GetUser
 @apiGroup UserForUser
 @apiPermission Authenticated user
@@ -467,12 +495,14 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
 """
 """
 @api {put} rest-auth/user/ Change one user (own information)
+@apiHeader {String} Authorization='Token 4a483a106cb2924480fcf48d4ac24f0b51540fae'
+@apiSampleRequest http://localhost:8000/api/v1/rest-auth/user/
 @apiName PutUser
 @apiGroup UserForUser
 @apiPermission Authenticated user
-@apiParam {String} username       The username.
-@apiParam {String} first_name     The first name.
-@apiParam {String} last_name      the last name.
+@apiParam {String} updated_username       The updated username.
+@apiParam {String} updated_first_name     The updated first name.
+@apiParam {String} updated_last_name      The updated last name.
 
 @apiSuccess {Number} pk           The unique ID.
 @apiSuccess {String} username     Username.
@@ -505,43 +535,3 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
     }
 
 """
-"""
-@api {patch} rest-auth/user/ Partially change one user (own information)
-@apiName PatchUser
-@apiGroup UserForUser
-@apiPermission Authenticated user
-@apiParam {String} username       The username.
-@apiParam {String} first_name     The first name.
-@apiParam {String} last_name      the last name.
-
-@apiSuccess {Number} pk           The unique ID.
-@apiSuccess {String} username     Username.
-@apiSuccess {String} email        Email.
-@apiSuccess {String} first_name   First name.
-@apiSuccess {String} last_name    Last name.
-
-@apiSuccessExample Success-Response:
-    HTTP 200 OK
-    {
-        "pk": 3,
-        "username": "testuser2",
-        "email": "",
-        "first_name": "Test",
-        "last_name": "User2"
-    }
-@apiError BadRequest A user with that username already exists.
-@apiErrorExample Error-Response:
-    HTTP 400 Bad Request
-    {
-        "username": [
-            "A user with that username already exists."
-    }
-
-@apiError Forbidden The user besides admin has no permission to delete the user.
-@apiErrorExample Error-Response:
-    HTTP 403 Forbidden
-    {
-        "detail": "Authentication credentials were not provided."
-    }
-"""
-

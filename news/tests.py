@@ -1,30 +1,24 @@
-from rest_framework.test import APIClient
 from rest_framework.test import APITestCase
 from rest_framework.test import APIRequestFactory
-from django.urls import reverse, resolve
+from django.urls import reverse
 from django.contrib.auth.models import AnonymousUser, User
 from django.test import TestCase
 
-from news import views
 from .models import Article, Like
 from .views import ArticleList, ArticleDetail, LikeCreate, LikeDestroy, UserList, UserDetail
+
 
 class TestArticleModel(TestCase):
     @classmethod
     def setUpTestData(cls):
         testuser1 = User.objects.create_user(
-            username = 'testuser1', password='abc123')
+            username='testuser1', password='abc123')
         testuser1.save()
         test_article = Article.objects.create(
-            author = 'Author', 
-            title = 'Article title',
-            body = 'Body content ...')
+            author='Author',
+            title='Article title',
+            body='Body content ...')
         test_article.save()
-        testlike = Like.objects.create(
-            reader = testuser1,
-            article = test_article
-        )
-        testlike.save()
 
     def test_article_content(self):
         article = Article.objects.get(id=1)
@@ -34,7 +28,7 @@ class TestArticleModel(TestCase):
         self.assertEqual(expected_author, 'Author')
         self.assertEqual(expected_title, 'Article title')
         self.assertEqual(expected_body, 'Body content ...')
-        
+
 
 class TestArticleViews(APITestCase):
     def setUp(self):
@@ -42,7 +36,7 @@ class TestArticleViews(APITestCase):
         self.user = User.objects.create_user(
             username='Name', email='test@company.com', password='top_secret')
         self.article = Article.objects.create(
-            author = 'Author', title = 'Article title', body = 'Body content ...')    
+            author='Author', title='Article title', body='Body content ...')
 
     def test_list_user(self):
         request = self.factory.get(reverse('articles'))
@@ -79,6 +73,7 @@ class TestArticleViews(APITestCase):
         self.assertEqual(response.status_code, 403,
                         f'Expected Response Code 403 - FORBIDDEN, received {response.status_code} instead.')
 
+
 class TestLikeViews(APITestCase):
     def setUp(self):
         self.factory = APIRequestFactory()
@@ -111,6 +106,7 @@ class TestLikeViews(APITestCase):
         response = LikeDestroy.as_view()(request, pk=self.like.pk)
         self.assertEqual(response.status_code, 204, 
                         f'Expected Response Code 204 - NO CONTENT, received {response.status_code} instead.')
+
 
 class TestUser(APITestCase):
     def setUp(self):
@@ -168,4 +164,3 @@ class TestUser(APITestCase):
         response = UserDetail.as_view()(request, pk=10000)
         self.assertEqual(response.status_code, 404,
                         f'Expected Response Code 404 - NOT FOUND, received {response.status_code} instead.')
- 

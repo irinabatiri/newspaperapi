@@ -1,8 +1,27 @@
 [
   {
     "type": "get",
-    "url": ":id",
+    "url": "articles/:id",
     "title": "Retrieve one article",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "defaultValue": "Token a1fe532ee4dbb5307cba3994733bcc6c1f47c8b2",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://localhost:8000/api/v1/articles/:id"
+      }
+    ],
     "name": "GetArticle",
     "group": "Articles",
     "parameter": {
@@ -114,8 +133,27 @@
   },
   {
     "type": "get",
-    "url": "/",
+    "url": "articles/",
     "title": "Retrieve all articles",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "defaultValue": "Token a1fe532ee4dbb5307cba3994733bcc6c1f47c8b2",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://localhost:8000/api/v1/articles/"
+      }
+    ],
     "name": "GetArticles",
     "group": "Articles",
     "permission": [
@@ -205,6 +243,25 @@
     "type": "post",
     "url": "rest-auth/logout/",
     "title": "Logout page",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "defaultValue": "Token a1fe532ee4dbb5307cba3994733bcc6c1f47c8b2",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://localhost:8000/api/v1/rest-auth/logout/"
+      }
+    ],
     "name": "GetLogout",
     "group": "Authentication",
     "permission": [
@@ -220,7 +277,7 @@
             "type": "String",
             "optional": false,
             "field": "message",
-            "description": ""
+            "description": "<p>Successfully logged out.</p>"
           }
         ]
       },
@@ -237,9 +294,28 @@
     "groupTitle": "Authentication"
   },
   {
-    "type": "post",
+    "type": "get",
     "url": "rest-auth/password/reset/confirm/",
     "title": "Password reset confirm",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "defaultValue": "Token 543b765b9df06a3c2cf05f4f456f926739c38f07",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://localhost:8000/api/v1/rest-auth/password/reset/confirm"
+      }
+    ],
     "name": "PostConfirmResetPassword",
     "group": "Authentication",
     "permission": [
@@ -263,20 +339,6 @@
             "optional": false,
             "field": "newpassword2",
             "description": "<p>The same new password</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "user_ID",
-            "description": "<p>The unique user's ID</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "token",
-            "description": "<p>The auth token</p>"
           }
         ]
       }
@@ -328,6 +390,11 @@
     "type": "post",
     "url": "rest-auth/login/",
     "title": "Login post page",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:8000/api/v1/rest-auth/login/"
+      }
+    ],
     "name": "PostLogin",
     "group": "Authentication",
     "permission": [
@@ -407,6 +474,25 @@
     "type": "post",
     "url": "rest-auth/password/change/",
     "title": "Password change",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "defaultValue": "Token 543b765b9df06a3c2cf05f4f456f926739c38f07",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://localhost:8000/api/v1/rest-auth/password/change/"
+      }
+    ],
     "name": "PostNewPassword",
     "group": "Authentication",
     "permission": [
@@ -481,6 +567,11 @@
     "type": "post",
     "url": "rest-auth/registration/",
     "title": "Registration",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:8000/api/v1/rest-auth/registration/"
+      }
+    ],
     "name": "PostRegistration",
     "group": "Authentication",
     "permission": [
@@ -579,6 +670,25 @@
     "type": "post",
     "url": "rest-auth/password/reset/",
     "title": "Password reset",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "defaultValue": "Token 543b765b9df06a3c2cf05f4f456f926739c38f07",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://localhost:8000/api/v1/rest-auth/password/reset/"
+      }
+    ],
     "name": "PostResetPassword",
     "group": "Authentication",
     "permission": [
@@ -674,6 +784,25 @@
     "type": "delete",
     "url": "likes/:id",
     "title": "Unlike an article",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "defaultValue": "Token 6c00b7d00f7c2ceb9c7287927c5cad2418de425c",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://localhost:8000/api/v1/likes/:id"
+      }
+    ],
     "name": "DeleteLike",
     "group": "Likes",
     "permission": [
@@ -741,6 +870,25 @@
     "type": "post",
     "url": "/likes/",
     "title": "Like an article",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "defaultValue": "Token \t6c00b7d00f7c2ceb9c7287927c5cad2418de425c",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://localhost:8000/api/v1/likes/"
+      }
+    ],
     "name": "PostLike",
     "group": "Likes",
     "permission": [
@@ -836,6 +984,25 @@
     "type": "get",
     "url": "rest-auth/user/",
     "title": "Retrieve the logged in user",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "defaultValue": "Token c5d185f9b0a38ef1cd9ac76b7e1adcaa80345e13",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://localhost:8000/api/v1/rest-auth/user/"
+      }
+    ],
     "name": "GetUser",
     "group": "UserForUser",
     "permission": [
@@ -915,129 +1082,28 @@
     "groupTitle": "UserForUser"
   },
   {
-    "type": "patch",
-    "url": "rest-auth/user/",
-    "title": "Partially change one user (own information)",
-    "name": "PatchUser",
-    "group": "UserForUser",
-    "permission": [
-      {
-        "name": "Authenticated user"
-      }
-    ],
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "username",
-            "description": "<p>The username.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "first_name",
-            "description": "<p>The first name.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "last_name",
-            "description": "<p>the last name.</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "Number",
-            "optional": false,
-            "field": "pk",
-            "description": "<p>The unique ID.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "username",
-            "description": "<p>Username.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "email",
-            "description": "<p>Email.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "first_name",
-            "description": "<p>First name.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "last_name",
-            "description": "<p>Last name.</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP 200 OK\n{\n    \"pk\": 3,\n    \"username\": \"testuser2\",\n    \"email\": \"\",\n    \"first_name\": \"Test\",\n    \"last_name\": \"User2\"\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "BadRequest",
-            "description": "<p>A user with that username already exists.</p>"
-          },
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "Forbidden",
-            "description": "<p>The user besides admin has no permission to delete the user.</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Error-Response:",
-          "content": "HTTP 400 Bad Request\n{\n    \"username\": [\n        \"A user with that username already exists.\"\n}",
-          "type": "json"
-        },
-        {
-          "title": "Error-Response:",
-          "content": "HTTP 403 Forbidden\n{\n    \"detail\": \"Authentication credentials were not provided.\"\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "version": "0.0.0",
-    "filename": "./news/views.py",
-    "groupTitle": "UserForUser"
-  },
-  {
     "type": "put",
     "url": "rest-auth/user/",
     "title": "Change one user (own information)",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "defaultValue": "Token 4a483a106cb2924480fcf48d4ac24f0b51540fae",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://localhost:8000/api/v1/rest-auth/user/"
+      }
+    ],
     "name": "PutUser",
     "group": "UserForUser",
     "permission": [
@@ -1052,22 +1118,22 @@
             "group": "Parameter",
             "type": "String",
             "optional": false,
-            "field": "username",
-            "description": "<p>The username.</p>"
+            "field": "updated_username",
+            "description": "<p>The updated username.</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
-            "field": "first_name",
-            "description": "<p>The first name.</p>"
+            "field": "updated_first_name",
+            "description": "<p>The updated first name.</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
-            "field": "last_name",
-            "description": "<p>the last name.</p>"
+            "field": "updated_last_name",
+            "description": "<p>The updated last name.</p>"
           }
         ]
       }
@@ -1156,8 +1222,27 @@
   },
   {
     "type": "delete",
-    "url": "user/:id",
+    "url": "user/:id/",
     "title": "Delete one user",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "defaultValue": "Token 8fc190f141d323b9ce9570d8bbe6d8f5206d81be",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://localhost:8000/api/v1/users/:id/"
+      }
+    ],
     "name": "DeleteUser",
     "group": "UsersForAdmin",
     "parameter": {
@@ -1227,8 +1312,27 @@
   },
   {
     "type": "get",
-    "url": "users/:id",
+    "url": "users/:id/",
     "title": "Retreive one user",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "defaultValue": "Token 8fc190f141d323b9ce9570d8bbe6d8f5206d81be",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://localhost:8000/api/v1/users/:id/"
+      }
+    ],
     "name": "GetUser",
     "group": "UsersForAdmin",
     "parameter": {
@@ -1314,6 +1418,28 @@
     "type": "get",
     "url": "users/",
     "title": "Retrieve all users",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "defaultValue": "Token 8fc190f141d323b9ce9570d8bbe6d8f5206d81be",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://localhost:8000/api/v1/users/"
+      },
+      {
+        "url": "http://127.0.0.1:8000/api/v1/"
+      }
+    ],
     "name": "GetUsers",
     "group": "UsersForAdmin",
     "permission": [
@@ -1380,8 +1506,27 @@
   },
   {
     "type": "put",
-    "url": "users/:id",
+    "url": "users/:id/",
     "title": "Update a user",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "defaultValue": "Token 8fc190f141d323b9ce9570d8bbe6d8f5206d81be",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "http://localhost:8000/api/v1/users/:id/"
+      }
+    ],
     "name": "PutUser",
     "group": "UsersForAdmin",
     "parameter": {
